@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
+using Project.DTO.MapperProfiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,8 @@ namespace Project.DTO.ServiceInjection
         {
             MapperConfiguration mapperConfiguration =  new MapperConfiguration(x =>
             {
-                x.AddProfile();
+                x.AddProfile(new BookProfile());
+                x.AddProfile(new CategoryProfile());
             });
             IMapper mapper = mapperConfiguration.CreateMapper();
             services.AddSingleton(mapper);

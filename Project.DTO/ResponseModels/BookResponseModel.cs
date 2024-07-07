@@ -8,5 +8,8 @@ namespace Project.DTO.ResponseModels
 {
     public class BookResponseModel
     {
+        public string Name { get; set; }
+        public string UnitPrice { get; set; }
+        public int UnitInStock { get; set; }
     }
 }

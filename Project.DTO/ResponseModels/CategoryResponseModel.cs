@@ -8,5 +8,7 @@ namespace Project.DTO.ResponseModels
 {
     public class CategoryResponseModel
     {
+        public string CategoryName { get; set; }
+        public string Description { get; set; }
     }
 }
