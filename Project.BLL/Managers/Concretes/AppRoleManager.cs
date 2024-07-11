@@ -1,4 +1,5 @@
-﻿using Project.BLL.Managers.Abstracts;
+﻿using Project.BLL.DTOClasses.Concretes;
+using Project.BLL.Managers.Abstracts;
 using Project.Dal.Repositories.Abstracts;
 using Project.Entities.Models;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Project.BLL.Managers.Concretes
 {
-    public class AppRoleManager : BaseManager<AppRole>,IAppRoleManager
+    public class AppRoleManager : BaseManager<AppRole,AppRoleDTO>,IAppRoleManager
     {
         public AppRoleManager(IRepository<AppRole> iRep) : base(iRep)
         {

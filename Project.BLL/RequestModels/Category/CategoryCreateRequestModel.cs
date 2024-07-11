@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project.DTO.ResponseModels
+namespace Project.BLL.RequestModels.Category
 {
-    public class CategoryResponseModel
+    public class CategoryCreateRequestModel
     {
         public string CategoryName { get; set; }
         public string Description { get; set; }

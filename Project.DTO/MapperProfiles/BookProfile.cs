@@ -15,8 +15,6 @@ namespace Project.DTO.MapperProfiles
     {
         public BookProfile()
         {
-            CreateMap<BookResponseModel, BookDTO>().ReverseMap();
-            CreateMap<BookRequestModel, BookDTO>().ReverseMap();
             CreateMap<BookDTO, Book>().ReverseMap();
         }
     }

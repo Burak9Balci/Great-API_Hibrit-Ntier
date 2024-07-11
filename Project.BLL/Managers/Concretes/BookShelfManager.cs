@@ -1,4 +1,5 @@
-﻿using Project.BLL.Managers.Abstracts;
+﻿using Project.BLL.DTOClasses.Concretes;
+using Project.BLL.Managers.Abstracts;
 using Project.Dal.Repositories.Abstracts;
 using Project.Entities.Models;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Project.BLL.Managers.Concretes
 {
-    public class BookShelfManager : BaseManager<BookShelf>, IBookShelfManager
+    public class BookShelfManager : BaseManager<BookShelf, BookShelfDTO>, IBookShelfManager
     {
         public BookShelfManager(IRepository<BookShelf> iRep) : base(iRep)
         {

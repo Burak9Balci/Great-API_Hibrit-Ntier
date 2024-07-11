@@ -1,4 +1,5 @@
-﻿using Project.BLL.Managers.Abstracts;
+﻿using Project.BLL.DTOClasses.Concretes;
+using Project.BLL.Managers.Abstracts;
 using Project.Dal.Repositories.Abstracts;
 using Project.Entities.Models;
 using System;
@@ -9,10 +10,12 @@ using System.Threading.Tasks;
 
 namespace Project.BLL.Managers.Concretes
 {
-    public class AppUserManager : BaseManager<AppUser>,IAppUserManager
+    public class AppUserManager : BaseManager<AppUser,AppUserDTO>,IAppUserManager
     {
         public AppUserManager(IRepository<AppUser> iRep) : base(iRep)
         {
         }
+
+       
     }
 }

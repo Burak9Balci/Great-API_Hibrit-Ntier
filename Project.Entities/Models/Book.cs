@@ -8,8 +8,13 @@ namespace Project.Entities.Models
 {
     public class Book : BaseEntity
     {
+        public override string ToString()
+        {
+            return Name;
+
+        }
         public string Name { get; set; }
-        public string UnitPrice { get; set; }
+        public decimal UnitPrice { get; set; }
         public int UnitInStock { get; set; }
         public int? CategoryID { get; set; }
         public int? AuthorID { get; set; }
@@ -21,6 +26,6 @@ namespace Project.Entities.Models
         public virtual Author Author { get; set; }
         public virtual BookShelf BookShelf { get; set; }
         public virtual Editor Editor { get; set; }
-        public ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

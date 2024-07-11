@@ -5,6 +5,10 @@ namespace Project.Api.ShoppingTools
     [Serializable]
     public class CartItem
     {
+        public CartItem()
+        {
+            Amount++;
+        }
         [JsonProperty("ID")]
         public int ID { get; set; }
         [JsonProperty("Name")]

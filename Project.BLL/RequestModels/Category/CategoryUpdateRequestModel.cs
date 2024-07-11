@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project.DTO.RequestModels
+namespace Project.BLL.RequestModels.Category
 {
-    public class CategoryRequestModel
+    public class CategoryUpdateRequestModel
     {
+        public int ID { get; set; }
         public string CategoryName { get; set; }
         public string Description { get; set; }
     }

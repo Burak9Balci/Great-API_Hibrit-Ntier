@@ -9,7 +9,7 @@ namespace Project.Entities.Models
 {
     public class BookShelf : BaseEntity
     {
-        public int ShelfNo { get; set; }
+        public short ShelfNo { get; set; }
         //RS
         public virtual ICollection<Book> Books { get; set; }
     }

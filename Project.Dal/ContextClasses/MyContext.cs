@@ -15,7 +15,7 @@ namespace Project.Dal.ContextClasses
 {
     public class MyContext : IdentityDbContext<AppUser,AppRole,int,IdentityUserClaim<int>,AppUserRole,IdentityUserLogin<int>,IdentityRoleClaim<int>,IdentityUserToken<int>>
     {
-        public MyContext(DbContextOptions options) : base(options) 
+        public MyContext(DbContextOptions<MyContext> options) : base(options) 
         {
 
         }

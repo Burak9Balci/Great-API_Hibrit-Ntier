@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project.DTO.DTOClasses
+namespace Project.BLL.DTOClasses.Concretes
 {
-    public class CategoryDTO
+    public class CategoryDTO : BaseDTO
     {
+
         public string CategoryName { get; set; }
         public string Description { get; set; }
     }

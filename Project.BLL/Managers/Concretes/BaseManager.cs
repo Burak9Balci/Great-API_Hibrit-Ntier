@@ -1,4 +1,5 @@
-﻿using Project.BLL.Managers.Abstracts;
+﻿using Project.BLL.DTOClasses.Abstracts;
+using Project.BLL.Managers.Abstracts;
 using Project.Dal.Repositories.Abstracts;
 using Project.Dal.Repositories.Concretes;
 using Project.Entities.Interfaces;
@@ -12,14 +13,14 @@ using System.Threading.Tasks;
 
 namespace Project.BLL.Managers.Concretes
 {
-    public class BaseManager<T> : IManager<T> where T : class, IEntity
+    public class BaseManager<T,X> : IManager<T,X> where T : class, IEntity where X : class,IDTO
     {
         IRepository<T> _iRep;
         public BaseManager(IRepository<T> iRep)
         {
             _iRep = iRep;
         }
-        public async Task AddAsync(T item)
+        public async Task AddAsync(X item)
         {
            await _iRep.AddAsync(item);
            
@@ -30,7 +31,7 @@ namespace Project.BLL.Managers.Concretes
           return await _iRep.AnyAsync(exp);
         }
 
-        public async Task  DeleteAsync(T item)
+        public async Task  DeleteAsync(X item)
         {
            await _iRep.DeleteAsync(item);
         }
@@ -75,7 +76,7 @@ namespace Project.BLL.Managers.Concretes
             return _iRep.Select(exp);
         }
 
-        public async Task UpdateAsync(T item)
+        public async Task UpdateAsync(X item)
         {
           await _iRep.UpdateAsync(item);
         }

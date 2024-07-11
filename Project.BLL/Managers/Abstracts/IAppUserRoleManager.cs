@@ -1,4 +1,5 @@
-﻿using Project.Entities.Models;
+﻿using Project.BLL.DTOClasses.Concretes;
+using Project.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Project.BLL.Managers.Abstracts
 {
-    public interface IAppUserRoleManager : IManager<AppUserRole>
+    public interface IAppUserRoleManager : IManager<AppUserRole,AppUserRoleDTO>
     {
     }
 }

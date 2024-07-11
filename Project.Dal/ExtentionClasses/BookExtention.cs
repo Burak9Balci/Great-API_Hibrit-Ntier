@@ -16,6 +16,7 @@ namespace Project.Dal.ExtentionClasses
             {
                 ID = 1,
                 Name = "Ateş ve Kan",
+                UnitPrice = 22,
                 AuthorID = 1,
             };
             model.Entity<Book>().HasData(b);

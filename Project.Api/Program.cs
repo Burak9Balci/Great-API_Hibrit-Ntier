@@ -1,4 +1,5 @@
-using Project.DTO.ServiceInjection;
+
+using Project.BLL.ServiceInjections;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMapperService();
+
+builder.Services.AddDbContextService();
+builder.Services.AddIdentityService();
+builder.Services.AddManagerService();
+builder.Services.AddRepService();
 
 WebApplication app = builder.Build();
 

@@ -13,6 +13,6 @@ namespace Project.Entities.Models
         public int? AppUserID { get; set; }
         //Rs
         public virtual AppUser AppUser { get; set; }
-        public ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }
