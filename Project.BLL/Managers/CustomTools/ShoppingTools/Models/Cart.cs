@@ -1,7 +1,12 @@
 ﻿using Newtonsoft.Json;
-using Swashbuckle.AspNetCore.SwaggerGen;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 
-namespace Project.Api.ShoppingTools
+namespace Project.BLL.Managers.CustomTools.ShoppingTools.Models
 {
     [Serializable]
     public class Cart
@@ -10,7 +15,7 @@ namespace Project.Api.ShoppingTools
         Dictionary<int, CartItem> _myCart;
         public Cart()
         {
-            _myCart = new Dictionary<int,CartItem>();
+            _myCart = new Dictionary<int, CartItem>();
         }
         [JsonProperty("CartItems")]
         public List<CartItem> CartItems
@@ -18,7 +23,15 @@ namespace Project.Api.ShoppingTools
             get
             {
                 return _myCart.Values.ToList();
-            }    
+            }
+        }
+        [JsonProperty("SubTotal")]
+        public decimal SubTotal
+        {
+            get
+            {
+                return _myCart.Values.Sum(x => x.SubTotal);
+            }
         }
         public void AddToCart(CartItem item)
         {
@@ -29,25 +42,17 @@ namespace Project.Api.ShoppingTools
             }
             _myCart.Add(item.ID, item);
         }
-        public void Decrease(int id)
-        {
-            _myCart[id].Amount--;
-            if (_myCart[id].Amount == 0)
-            {
-                _myCart.Remove(id);
-            }
-        }
         public void DeleteFromCart(int id)
         {
             _myCart.Remove(id);
         }
-        [JsonProperty("TotalPrice")]
-        public decimal TotalPrice
+        public void Decrease(int id)
         {
-            get
+            if (_myCart[id].Amount > 1)
             {
-                return _myCart.Values.Sum(x => x.SubTotal);
+                _myCart[id].Amount--;
             }
+            DeleteFromCart(id);
         }
 
     }

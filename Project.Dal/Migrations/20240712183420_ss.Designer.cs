@@ -12,8 +12,8 @@ using Project.Dal.ContextClasses;
 namespace Project.Dal.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20240712160722_dd")]
-    partial class dd
+    [Migration("20240712183420_ss")]
+    partial class ss
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -302,7 +302,7 @@ namespace Project.Dal.Migrations
                         {
                             ID = 1,
                             AuthorName = "J.R.R Martin",
-                            CreatedDate = new DateTime(2024, 7, 12, 19, 7, 21, 745, DateTimeKind.Local).AddTicks(1562),
+                            CreatedDate = new DateTime(2024, 7, 12, 21, 34, 19, 678, DateTimeKind.Local).AddTicks(1119),
                             Status = 1
                         });
                 });
@@ -361,18 +361,6 @@ namespace Project.Dal.Migrations
                     b.HasIndex("EditorID");
 
                     b.ToTable("Books");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            AuthorID = 1,
-                            CreatedDate = new DateTime(2024, 7, 12, 19, 7, 21, 745, DateTimeKind.Local).AddTicks(1774),
-                            Name = "Ateş ve Kan",
-                            Status = 1,
-                            UnitInStock = 100,
-                            UnitPrice = 22m
-                        });
                 });
 
             modelBuilder.Entity("Project.Entities.Models.BookShelf", b =>

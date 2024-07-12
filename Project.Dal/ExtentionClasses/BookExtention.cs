@@ -12,14 +12,17 @@ namespace Project.Dal.ExtentionClasses
     {
         public static void SeedBook(ModelBuilder model)
         {
-            Book b = new()
-            {
-                ID = 1,
-                Name = "Ateş ve Kan",
-                UnitPrice = 22,
-                AuthorID = 1,
-            };
-            model.Entity<Book>().HasData(b);
+            //Book b = new()
+            //{
+            //    ID = 1,
+            //    Name = "Ateş ve Kan",
+            //    UnitPrice = 22,
+            //    AuthorID = 1,
+            //    CategoryID = 1,
+            //    BookShelfID = 1,
+            //    EditorID = 1
+            //};
+            //model.Entity<Book>().HasData(b);
         }
 
     }

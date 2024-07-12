@@ -10,7 +10,7 @@ namespace Project.Entities.Models
     {
         public Book()
         {
-            UnitInStock = 100;
+          
         }
         public override string ToString()
         {

@@ -2,6 +2,7 @@
 using Project.BLL.DTOClasses.Abstracts;
 using Project.BLL.Managers.Abstracts;
 using Project.BLL.Managers.Concretes;
+using Project.BLL.Managers.CustomTools.ShoppingTools.ShoppingManagers;
 using Project.Entities.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace Project.BLL.ServiceInjections
             service.AddScoped<IEditorManager, EditorManager>();
             service.AddScoped<IOrderDetailManager, OrderDetailManager>();
             service.AddScoped<IOrderManager, OrderManager>();
+            service.AddScoped<IShoppingManager, ShoppingManager>();
             return service;
         }
     }
