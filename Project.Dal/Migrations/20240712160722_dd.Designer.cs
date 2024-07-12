@@ -12,8 +12,8 @@ using Project.Dal.ContextClasses;
 namespace Project.Dal.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20240710110037_ff")]
-    partial class ff
+    [Migration("20240712160722_dd")]
+    partial class dd
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -302,7 +302,7 @@ namespace Project.Dal.Migrations
                         {
                             ID = 1,
                             AuthorName = "J.R.R Martin",
-                            CreatedDate = new DateTime(2024, 7, 10, 14, 0, 36, 990, DateTimeKind.Local).AddTicks(8274),
+                            CreatedDate = new DateTime(2024, 7, 12, 19, 7, 21, 745, DateTimeKind.Local).AddTicks(1562),
                             Status = 1
                         });
                 });
@@ -367,10 +367,10 @@ namespace Project.Dal.Migrations
                         {
                             ID = 1,
                             AuthorID = 1,
-                            CreatedDate = new DateTime(2024, 7, 10, 14, 0, 36, 990, DateTimeKind.Local).AddTicks(8385),
+                            CreatedDate = new DateTime(2024, 7, 12, 19, 7, 21, 745, DateTimeKind.Local).AddTicks(1774),
                             Name = "Ateş ve Kan",
                             Status = 1,
-                            UnitInStock = 0,
+                            UnitInStock = 100,
                             UnitPrice = 22m
                         });
                 });
@@ -413,7 +413,6 @@ namespace Project.Dal.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("CategoryName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
@@ -424,7 +423,6 @@ namespace Project.Dal.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedDate")

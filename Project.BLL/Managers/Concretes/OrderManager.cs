@@ -1,4 +1,5 @@
-﻿using Project.BLL.DTOClasses.Concretes;
+﻿using AutoMapper;
+using Project.BLL.DTOClasses.Concretes;
 using Project.BLL.Managers.Abstracts;
 using Project.Dal.Repositories.Abstracts;
 using Project.Entities.Models;
@@ -12,7 +13,7 @@ namespace Project.BLL.Managers.Concretes
 {
     public class OrderManager : BaseManager<Order,OrderDTO>, IOrderManager
     {
-        public OrderManager(IRepository<Order> iRep) : base(iRep)
+        public OrderManager(IRepository<Order> iRep, IMapper mapper) : base(iRep, mapper)
         {
         }
     }

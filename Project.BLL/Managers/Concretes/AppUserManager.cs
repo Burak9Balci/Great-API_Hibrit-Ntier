@@ -1,4 +1,5 @@
-﻿using Project.BLL.DTOClasses.Concretes;
+﻿using AutoMapper;
+using Project.BLL.DTOClasses.Concretes;
 using Project.BLL.Managers.Abstracts;
 using Project.Dal.Repositories.Abstracts;
 using Project.Entities.Models;
@@ -12,7 +13,7 @@ namespace Project.BLL.Managers.Concretes
 {
     public class AppUserManager : BaseManager<AppUser,AppUserDTO>,IAppUserManager
     {
-        public AppUserManager(IRepository<AppUser> iRep) : base(iRep)
+        public AppUserManager(IRepository<AppUser> iRep, IMapper mapper) : base(iRep, mapper)
         {
         }
 

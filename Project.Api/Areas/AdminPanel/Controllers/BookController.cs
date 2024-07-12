@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Project.Api.Models.RequestModels;
-using Project.Api.Models.ResponseModels;
 using Project.BLL.DTOClasses.Concretes;
 using Project.BLL.Managers.Abstracts;
 using Project.BLL.Managers.Concretes;
+using Project.BLL.RequestModels.Book;
+using Project.BLL.ResponseModels.Book;
 using Project.Entities.Models;
 
 namespace Project.Api.Areas.AdminPanel.Controllers
@@ -39,10 +39,10 @@ namespace Project.Api.Areas.AdminPanel.Controllers
                 Name = x.Name,
                 UnitInStock = x.UnitInStock,
                 UnitPrice = x.UnitPrice,
-             //   CategoryName = x.Category.CategoryName,
-                AuthorName = x.Author.AuthorName,
-             //   ShelfNo = x.BookShelf.ShelfNo,
-             //   EditorName = x.Editor.EditorName,
+                CategoryID = x.Category.ID,
+                AuthorID = x.Author.ID,
+                BookShelfID = x.BookShelf.ID,
+                EditorID = x.Editor.ID,
 
 
             }).ToList();
@@ -54,62 +54,34 @@ namespace Project.Api.Areas.AdminPanel.Controllers
                     Name = item.Name,
                     UnitInStock = item.UnitInStock,
                     UnitPrice = item.UnitPrice,
-                 //   CategoryName = item.CategoryName,
-                    AuthorName = item.AuthorName,
-                //   BookShelf = item.ShelfNo,
-                //    EditorName = item.EditorName
+                    CategoryID = item.CategoryID,
+                    AuthorID = item.AuthorID,
+                    BookShelfID = item.BookShelfID,
+                    EditorID = item.EditorID
                 };
                 response.Add(responseModel);    
             }
             return Ok(response);
         }
         [HttpPost]
-        public async Task<IActionResult> AddBook(BookRequestModel model)
+        public async Task<IActionResult> CreateBook(BookCreateRequestModel model)
         {
-            BookDTO bDTO = new()
-            {
-                Name = model.Name,
-                UnitPrice = model.UnitPrice,
-                UnitInStock = model.UnitInStock,
-                AuthorName = (await _iAuthor.FirstOrDefaultAsync(x =>x.AuthorName.Contains(model.AuthorName))).AuthorName,
-            //    ShelfNo = (await _iBookShelfManager.FirstOrDefaultAsync(x =>x.ShelfNo == model.ShelfNo)).ShelfNo,
-             //   CategoryName = (await _cManager.FirstOrDefaultAsync(x =>x.CategoryName.Contains(model.CategoryName))).CategoryName,
-             //   EditorName = (await _eManager.FirstOrDefaultAsync(x =>x.EditorName.Contains(model.EditorName))).EditorName
-
-            };
-            Book b = new()
-            {
-                Name = bDTO.Name,
-                UnitPrice = bDTO.UnitPrice,
-                UnitInStock = bDTO.UnitInStock,
-                Author = await _iAuthor.FirstOrDefaultAsync(x => x.AuthorName == bDTO.AuthorName),
-               // BookShelf = await _iBookShelfManager.FirstOrDefaultAsync(x => x.ShelfNo == bDTO.ShelfNo),
-             //   Category = await _cManager.FirstOrDefaultAsync(x => x.CategoryName == bDTO.CategoryName),
-
-              //  Editor = await _eManager.FirstOrDefaultAsync(x =>x.EditorName == bDTO.EditorName)
-            };
             
-            await _iBook.AddAsync(b);
-            return Ok($"{b} isimli kitap sisteme eklendi");
+            BookDTO book = _mapper.Map<BookDTO>(model);
+            await _iBook.AddAsync(book);
+            return Ok($"{book} isimli kitap sisteme eklendi");
         }
         [HttpPut]
-        public async Task<IActionResult> UpdateBook(BookRequestModel model,int id)
+        public async Task<IActionResult> UpdateBook(BookUpdateRequestModel model)
         {
-            BookDTO bDto = _mapper.Map<BookDTO>(await _iBook.FindAsync(id));
-            bDto.Name = model.Name;
-            bDto.UnitPrice = model.UnitPrice;
-            bDto.EditorName = model.EditorName;
-            bDto.AuthorName = model.AuthorName;
-            bDto.ShelfNo = model.ShelfNo;
-            bDto.CategoryName = model.CategoryName;
-            Book b = _mapper.Map<Book>(bDto);
-            await _iBook.UpdateAsync(b);
+            BookDTO bDto = _mapper.Map<BookDTO>(model);
+            await _iBook.UpdateAsync(bDto);
             return Ok($"Guncelleme yapıldı ");
         }
         [HttpDelete]
         public async Task<IActionResult> DeleteBook(int id)
         {
-            await _iBook.DeleteAsync( await _iBook.FindAsync(id));
+            await _iBook.DeleteAsync(id);
             return Ok("Islem Tamamlandı kitap sistemden silindi");
         }
     }

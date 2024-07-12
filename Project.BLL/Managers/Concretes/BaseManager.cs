@@ -1,4 +1,5 @@
-﻿using Project.BLL.DTOClasses.Abstracts;
+﻿using AutoMapper;
+using Project.BLL.DTOClasses.Abstracts;
 using Project.BLL.Managers.Abstracts;
 using Project.Dal.Repositories.Abstracts;
 using Project.Dal.Repositories.Concretes;
@@ -15,14 +16,17 @@ namespace Project.BLL.Managers.Concretes
 {
     public class BaseManager<T,X> : IManager<T,X> where T : class, IEntity where X : class,IDTO
     {
+        IMapper _mapper;
         IRepository<T> _iRep;
-        public BaseManager(IRepository<T> iRep)
+        public BaseManager(IRepository<T> iRep, IMapper mapper)
         {
             _iRep = iRep;
+            _mapper = mapper;
         }
         public async Task AddAsync(X item)
         {
-           await _iRep.AddAsync(item);
+           
+           await _iRep.AddAsync(_mapper.Map<T>(item));
            
         }
 
@@ -31,9 +35,9 @@ namespace Project.BLL.Managers.Concretes
           return await _iRep.AnyAsync(exp);
         }
 
-        public async Task  DeleteAsync(X item)
+        public async Task  DeleteAsync(int id)
         {
-           await _iRep.DeleteAsync(item);
+           await _iRep.DeleteAsync(await _iRep.FindAsync(id));
         }
 
         public async Task<T> FindAsync(int id)
@@ -78,7 +82,7 @@ namespace Project.BLL.Managers.Concretes
 
         public async Task UpdateAsync(X item)
         {
-          await _iRep.UpdateAsync(item);
+          await _iRep.UpdateAsync(_mapper.Map<T>(item));
         }
 
         public List<T> Where(Expression<Func<T, bool>> exp)

@@ -17,7 +17,7 @@ namespace Project.BLL.Managers.Abstracts
         List<T> GetModifieds();
         Task AddAsync(X item);
         Task UpdateAsync(X item);
-        Task DeleteAsync(X item);
+        Task DeleteAsync(int id);
         
         List<T> Where(Expression<Func<T, bool>> exp);
         List<T> GetAll();

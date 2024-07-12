@@ -12,9 +12,10 @@ namespace Project.BLL.DTOClasses.Concretes
         public string Name { get; set; }
         public decimal UnitPrice { get; set; }
         public int UnitInStock { get; set; }
-        public string AuthorName { get; set; }
-        public short ShelfNo { get; set; }
-        public string CategoryName { get; set; }
-        public string EditorName { get; set; }
+        public int AuthorID { get; set; }
+        public int BookShelfID { get; set; }
+        public int CategoryID { get; set; }
+        public int EditorID { get; set; }
+
     }
 }

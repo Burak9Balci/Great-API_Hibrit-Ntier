@@ -16,11 +16,6 @@
 
   <ItemGroup>
     <Folder Include="Managers\CustomTools\" />
-    <Folder Include="ResponseModels\Author\" />
-    <Folder Include="ResponseModels\Book\" />
-    <Folder Include="ResponseModels\BookShelf\" />
-    <Folder Include="ResponseModels\Category\" />
-    <Folder Include="ResponseModels\Editor\" />
   </ItemGroup>
 
 </Project>

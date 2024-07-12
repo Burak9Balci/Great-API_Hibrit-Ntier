@@ -8,6 +8,10 @@ namespace Project.Entities.Models
 {
     public class Book : BaseEntity
     {
+        public Book()
+        {
+            UnitInStock = 100;
+        }
         public override string ToString()
         {
             return Name;

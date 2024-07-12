@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Project.Api.Areas.AdminPanel.Models.RequestModels;
-using Project.Api.Areas.AdminPanel.Models.ResponseModels;
 using Project.BLL.DTOClasses.Concretes;
 using Project.BLL.Managers.Abstracts;
+using Project.BLL.RequestModels.Author;
+using Project.BLL.ResponseModels.Author;
 using Project.Entities.Models;
 
 namespace Project.Api.Areas.AdminPanel.Controllers
@@ -42,32 +42,23 @@ namespace Project.Api.Areas.AdminPanel.Controllers
             return Ok(authorResponseModels);
         }
         [HttpPost]
-        public async Task<IActionResult> AddAuthor(AuthorRequestModel model)
-        {
-            AuthorDTO authorDto = new()
-            {
-                AuthorName=model.AuthorName
-            };
-            Author a = _iMapper.Map<Author>(authorDto);
-            await _iAuthor.AddAsync(a);
-            return Ok($"{a.AuthorName} isimli kişi sis teme eklenmiştir");
-        }
-        [HttpPut]
-        public async Task<IActionResult> UpdateAuthor(AuthorRequestModel model,int id)
+        public async Task<IActionResult> CreateAuthor(AuthorCreateRequestModel model)
         {
             AuthorDTO authorDto = _iMapper.Map<AuthorDTO>(model);
-         
-
-
-            Author auther = _iMapper.Map<Author>(authorDto);
-
-            await _iAuthor.UpdateAsync(auther);
-            return Ok($"Guncelleme yapıldı Yeni deger : {auther.AuthorName} ");
+            await _iAuthor.AddAsync(authorDto);
+            return Ok($"{authorDto.AuthorName} isimli kişi sis teme eklenmiştir");
+        }
+        [HttpPut]
+        public async Task<IActionResult> UpdateAuthor(AuthorUpdateRequestModel model,int id)
+        {
+            AuthorDTO authorDto = _iMapper.Map<AuthorDTO>(model);
+            await _iAuthor.UpdateAsync(authorDto);
+            return Ok($"Guncelleme yapıldı Yeni deger : {authorDto.AuthorName} ");
         }
         [HttpDelete]
         public async Task<IActionResult> DeleteAuthor(int id)
         {
-            await _iAuthor.DeleteAsync(await _iAuthor.FindAsync(id));
+            await _iAuthor.DeleteAsync(id);
             return Ok();
         }
     }

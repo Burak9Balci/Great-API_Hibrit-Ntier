@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Project.Dal.Migrations
 {
     /// <inheritdoc />
-    public partial class ff : Migration
+    public partial class dd : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -100,8 +100,8 @@ namespace Project.Dal.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     YaratılanTarih = table.Column<DateTime>(name: "Yaratılan Tarih", type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -337,12 +337,12 @@ namespace Project.Dal.Migrations
             migrationBuilder.InsertData(
                 table: "Authors",
                 columns: new[] { "ID", "AuthorName", "Yaratılan Tarih", "DeletedDate", "ModifiedDate", "Status" },
-                values: new object[] { 1, "J.R.R Martin", new DateTime(2024, 7, 10, 14, 0, 36, 990, DateTimeKind.Local).AddTicks(8274), null, null, 1 });
+                values: new object[] { 1, "J.R.R Martin", new DateTime(2024, 7, 12, 19, 7, 21, 745, DateTimeKind.Local).AddTicks(1562), null, null, 1 });
 
             migrationBuilder.InsertData(
                 table: "Books",
                 columns: new[] { "ID", "AuthorID", "BookShelfID", "CategoryID", "Yaratılan Tarih", "DeletedDate", "EditorID", "ModifiedDate", "Name", "Status", "UnitInStock", "UnitPrice" },
-                values: new object[] { 1, 1, null, null, new DateTime(2024, 7, 10, 14, 0, 36, 990, DateTimeKind.Local).AddTicks(8385), null, null, null, "Ateş ve Kan", 1, 0, 22m });
+                values: new object[] { 1, 1, null, null, new DateTime(2024, 7, 12, 19, 7, 21, 745, DateTimeKind.Local).AddTicks(1774), null, null, null, "Ateş ve Kan", 1, 100, 22m });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

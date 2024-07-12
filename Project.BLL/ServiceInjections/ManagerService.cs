@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Project.BLL.DTOClasses.Abstracts;
 using Project.BLL.Managers.Abstracts;
 using Project.BLL.Managers.Concretes;
+using Project.Entities.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,7 @@ namespace Project.BLL.ServiceInjections
     {
         public static IServiceCollection AddManagerService(this IServiceCollection service)
         {
-            service.AddScoped(typeof(IManager<>),typeof(BaseManager<>));
+            service.AddScoped(typeof(IManager<IEntity,IDTO>), typeof(BaseManager<IEntity,IDTO>));
             service.AddScoped<IAppRoleManager,AppRoleManager>();
             service.AddScoped<IAppUserManager, AppUserManager>();
             service.AddScoped<IAppUserRoleManager, AppUserRoleManager>();

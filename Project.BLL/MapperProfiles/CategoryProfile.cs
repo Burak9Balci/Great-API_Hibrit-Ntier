@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Project.BLL.DTOClasses.Concretes;
+using Project.BLL.RequestModels.Category;
+using Project.BLL.ResponseModels.Category;
 using Project.Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +16,9 @@ namespace Project.BLL.MapperProfiles
         public CategoryProfile()
         {
             CreateMap<Category,CategoryDTO>().ReverseMap();
+            CreateMap<CategoryCreateRequestModel,CategoryDTO>().ReverseMap();
+            CreateMap<CategoryUpdateRequestModel,CategoryDTO>().ReverseMap();
+            CreateMap<CategoryResponseModel,CategoryDTO>().ReverseMap();
         }
     }
 }

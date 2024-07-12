@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
 using Project.BLL.DTOClasses.Concretes;
+using Project.BLL.RequestModels.Book;
+using Project.BLL.RequestModels.BookShelf;
+using Project.BLL.ResponseModels.BookShelf;
 using Project.Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +17,9 @@ namespace Project.BLL.MapperProfiles
         public BookShelfProfile()
         {
             CreateMap<BookShelf, BookShelfDTO>().ReverseMap();
+            CreateMap<BookShelfUpdateRequestModel, BookShelfDTO>().ReverseMap();
+            CreateMap<BookShelfCreateRequestModel, BookShelfDTO>().ReverseMap();
+            CreateMap<BookShelfResponseModel, BookShelfDTO>().ReverseMap();
         }
     }
 }

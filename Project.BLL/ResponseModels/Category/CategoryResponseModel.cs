@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project.BLL.DTOClasses.Concretes
+namespace Project.BLL.ResponseModels.Category
 {
-    public class CategoryDTO : BaseDTO
+    public class CategoryResponseModel
     {
-
+        public int ID { get; set; }
         public string CategoryName { get; set; }
         public string Description { get; set; }
-
     }
 }
