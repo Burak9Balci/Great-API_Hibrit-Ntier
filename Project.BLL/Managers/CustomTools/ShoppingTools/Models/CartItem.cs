@@ -10,10 +10,9 @@ namespace Project.BLL.Managers.CustomTools.ShoppingTools.Models
     [Serializable]
     public class CartItem
     {
-
         public CartItem()
         {
-
+            Amount++;
         }
         [JsonProperty("ID")]
         public int ID { get; set; }
@@ -33,7 +32,7 @@ namespace Project.BLL.Managers.CustomTools.ShoppingTools.Models
         }
         [JsonProperty("CategoryID")]
         public int? CategoryID { get; set; }
-        [JsonProperty("CategoryName")]
-        public string CategoryName { get; set; }
+        
+       
     }
 }

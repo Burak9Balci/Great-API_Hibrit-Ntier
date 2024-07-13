@@ -26,7 +26,7 @@ namespace Project.BLL.Managers.CustomTools.ShoppingTools.ShoppingManagers
             Book book = await _iBookManager.FindAsync(id);
             CartItem item = new()
             {
-                ID = id,
+                ID = book.ID,
                 Name = book.Name,
                 UnitPrice = book.UnitPrice,
                 CategoryID = book.CategoryID,

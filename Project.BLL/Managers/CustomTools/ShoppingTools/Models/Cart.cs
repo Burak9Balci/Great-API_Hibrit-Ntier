@@ -25,8 +25,8 @@ namespace Project.BLL.Managers.CustomTools.ShoppingTools.Models
                 return _myCart.Values.ToList();
             }
         }
-        [JsonProperty("SubTotal")]
-        public decimal SubTotal
+        [JsonProperty("TotalPrice")]
+        public decimal TotalPrice
         {
             get
             {
@@ -37,6 +37,7 @@ namespace Project.BLL.Managers.CustomTools.ShoppingTools.Models
         {
             if (_myCart.ContainsKey(item.ID))
             {
+                _myCart[item.ID].Amount++;
                 item.Amount++;
                 return;
             }
@@ -51,6 +52,7 @@ namespace Project.BLL.Managers.CustomTools.ShoppingTools.Models
             if (_myCart[id].Amount > 1)
             {
                 _myCart[id].Amount--;
+                return;
             }
             DeleteCart(id);
         }
