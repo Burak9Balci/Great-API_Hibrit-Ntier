@@ -22,15 +22,13 @@ namespace Project.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> AddBookToCart(int id)
         {
-            Book b = await _iBookManager.FindAsync(id);
-            CartItem c = new()
-            {
-                ID = id,
-                Name = b.Name,
+          
+            Cart c = await _iShopping.AddToCart(id);
+            HttpContext.Session.SetObject("scart",c);
+            return Ok();
 
-            };
-            HttpContext.Session.SetObject()
-                return Ok();
+            HttpContext.Session.SetObject("scart",await _iShopping.AddToCart(id));
+            return Ok();
         }
     }
 }
