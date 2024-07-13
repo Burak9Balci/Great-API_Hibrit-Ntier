@@ -9,9 +9,9 @@ namespace Project.BLL.Managers.CustomTools.ShoppingTools.ShoppingManagers
 {
     public interface IShoppingManager
     {
-        public Task<Cart> AddToCart(int id);
-        public Task<Cart> DeleteFromCart(int id);
-        public Task<Cart> Decrease(int id);
+        public Task<Cart> AddToCart(int id,Cart c);
+        public Task<Cart> DeleteCart(int id, Cart c);
+        public Task<Cart> Decrease(int id, Cart c);
         
     }
 }

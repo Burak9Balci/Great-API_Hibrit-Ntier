@@ -42,7 +42,7 @@ namespace Project.BLL.Managers.CustomTools.ShoppingTools.Models
             }
             _myCart.Add(item.ID, item);
         }
-        public void DeleteFromCart(int id)
+        public void DeleteCart(int id)
         {
             _myCart.Remove(id);
         }
@@ -52,7 +52,7 @@ namespace Project.BLL.Managers.CustomTools.ShoppingTools.Models
             {
                 _myCart[id].Amount--;
             }
-            DeleteFromCart(id);
+            DeleteCart(id);
         }
 
     }
