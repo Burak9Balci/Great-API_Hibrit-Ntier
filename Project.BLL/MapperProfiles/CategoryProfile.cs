@@ -3,6 +3,7 @@ using Project.BLL.DTOClasses.Concretes;
 using Project.BLL.RequestModels.Category;
 using Project.BLL.ResponseModels.Category;
 using Project.Entities.Models;
+using Project.VM.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace Project.BLL.MapperProfiles
             CreateMap<CategoryCreateRequestModel,CategoryDTO>().ReverseMap();
             CreateMap<CategoryUpdateRequestModel,CategoryDTO>().ReverseMap();
             CreateMap<CategoryResponseModel,CategoryDTO>().ReverseMap();
+            CreateMap<CategoryVM,CategoryDTO>().ReverseMap();
         }
     }
 }

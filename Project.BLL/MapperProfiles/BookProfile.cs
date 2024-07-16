@@ -3,6 +3,7 @@ using Project.BLL.DTOClasses.Concretes;
 using Project.BLL.RequestModels.Book;
 using Project.BLL.ResponseModels.Book;
 using Project.Entities.Models;
+using Project.VM.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace Project.BLL.MapperProfiles
             CreateMap<BookCreateRequestModel, BookDTO>().ReverseMap();
             CreateMap<BookUpdateRequestModel, BookDTO>().ReverseMap();
             CreateMap<BookResponseModel, BookDTO>().ReverseMap();
+            CreateMap<BookVM, BookDTO>().ReverseMap();
 
         }
     }

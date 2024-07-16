@@ -1,4 +1,5 @@
-﻿using Project.BLL.DTOClasses.Concretes;
+﻿using Microsoft.AspNetCore.Identity;
+using Project.BLL.DTOClasses.Concretes;
 using Project.Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -10,5 +11,7 @@ namespace Project.BLL.Managers.Abstracts
 {
     public interface IAppUserManager : IManager<AppUser,AppUserDTO>
     {
+        public Task<IdentityResult> CreateUserAsync(AppUserDTO appUser);
+        public Task AddRoleToUserAsync(AppUserDTO appUser, string role);
     }
 }

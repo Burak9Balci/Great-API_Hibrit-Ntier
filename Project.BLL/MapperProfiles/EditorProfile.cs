@@ -3,6 +3,7 @@ using Project.BLL.DTOClasses.Concretes;
 using Project.BLL.RequestModels.Editor;
 using Project.BLL.ResponseModels.Editor;
 using Project.Entities.Models;
+using Project.VM.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace Project.BLL.MapperProfiles
             CreateMap<EditorCreateRequestModel,EditorDTO>().ReverseMap();
             CreateMap<EditorUpdateRequestModel,EditorDTO>().ReverseMap();
             CreateMap<EditorResponseModel, EditorDTO>().ReverseMap();
+            CreateMap<EditorVM, EditorDTO>().ReverseMap();
         }
     }
 }

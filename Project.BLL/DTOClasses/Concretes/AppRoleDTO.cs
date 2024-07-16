@@ -8,5 +8,6 @@ namespace Project.BLL.DTOClasses.Concretes
 {
     public class AppRoleDTO : BaseDTO
     {
+        public virtual string? Name { get; set; }
     }
 }

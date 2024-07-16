@@ -22,6 +22,8 @@ namespace Project.BLL.ServiceInjections
                 x.AddProfile(new BookShelfProfile());
                 x.AddProfile(new CategoryProfile());
                 x.AddProfile(new EditorProfile());
+                x.AddProfile(new AppUserProfile());
+                x.AddProfile(new AppRoleProfile());
             });
             IMapper mapper = configuration.CreateMapper();
             service.AddSingleton(mapper);

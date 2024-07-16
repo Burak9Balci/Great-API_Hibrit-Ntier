@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Project.BLL.DTOClasses.Concretes;
 using Project.BLL.Managers.Abstracts;
 using Project.Dal.Repositories.Abstracts;
@@ -11,10 +12,24 @@ using System.Threading.Tasks;
 
 namespace Project.BLL.Managers.Concretes
 {
-    public class AppRoleManager : BaseManager<AppRole,AppRoleDTO>,IAppRoleManager
+    public class AppRoleManager : BaseManager<AppRole, AppRoleDTO>, IAppRoleManager
     {
-        public AppRoleManager(IRepository<AppRole> iRep, IMapper mapper) : base(iRep,mapper)
+        readonly RoleManager<AppRole> _roleManager;
+
+        
+
+        public AppRoleManager(IRepository<AppRole> iRep, IMapper mapper, RoleManager<AppRole> roleManager) : base(iRep,mapper)
         {
+            _roleManager = roleManager;
+        }
+
+        public async Task<AppRole> FindRoleAsync(string role)
+        {
+            if (await _roleManager.FindByNameAsync(role) == null)
+            {
+                await _roleManager.CreateAsync(new() { Name = role });
+            }
+            return await _roleManager.FindByNameAsync(role);
         }
     }
 }

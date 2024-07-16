@@ -21,7 +21,7 @@ namespace Project.BLL.Managers.CustomTools.ShoppingTools.ShoppingManagers
             _iBookManager = iBoookManager;
         }
         
-        public async Task<Cart> AddToCart(int id, Cart c)
+        public async Task<Cart> AddToCartAsync(int id, Cart c)
         {      
             Book book = await _iBookManager.FindAsync(id);
             CartItem item = new()
@@ -35,13 +35,13 @@ namespace Project.BLL.Managers.CustomTools.ShoppingTools.ShoppingManagers
             return c;
         }
 
-        public async Task<Cart> Decrease(int id,Cart c)
+        public async Task<Cart> DecreaseAsync(int id,Cart c)
         {
             c.Decrease(id);
             return c;
         }
 
-        public async Task<Cart> DeleteCart(int id, Cart c)
+        public async Task<Cart> DeleteCartAsync(int id, Cart c)
         {
             c.DeleteCart(id);
             return c;

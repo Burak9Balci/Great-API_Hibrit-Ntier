@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Project.BLL\Project.BLL.csproj" />
+    <ProjectReference Include="..\Project.Common\Project.Common.csproj" />
+    <ProjectReference Include="..\Project.Entities\Project.Entities.csproj" />
+    <ProjectReference Include="..\Project.VM\Project.VM.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\AdminPanel\Controllers\" />
+    <Folder Include="Areas\AdminPanel\Data\" />
+    <Folder Include="Areas\AdminPanel\Models\PageVMs\Book\" />
+    <Folder Include="Areas\AdminPanel\Models\PageVMs\Author\" />
+    <Folder Include="Areas\AdminPanel\Models\PageVMs\Editor\" />
+    <Folder Include="Areas\AdminPanel\Models\PageVMs\Category\" />
+    <Folder Include="Areas\AdminPanel\Models\PageVMs\BookShelf\" />
+    <Folder Include="Areas\AdminPanel\Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.7" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.3" />
+  </ItemGroup>
+
+</Project>

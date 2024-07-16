@@ -25,9 +25,7 @@ namespace Project.BLL.Managers.Concretes
         }
         public async Task AddAsync(X item)
         {
-           
            await _iRep.AddAsync(_mapper.Map<T>(item));
-           
         }
 
         public async Task<bool> AnyAsync(Expression<Func<T, bool>> exp)

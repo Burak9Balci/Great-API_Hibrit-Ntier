@@ -23,7 +23,7 @@ namespace Project.Api.Controllers
         public async Task<IActionResult> AddBookToCart(int itemId)
         {
             Cart c = HttpContext.Session.GetObject<Cart>("scart") != null ? HttpContext.Session.GetObject<Cart>("scart") : new Cart();
-            c = await _iShopping.AddToCart(itemId, c);
+            c = await _iShopping.AddToCartAsync(itemId, c);
             HttpContext.Session.SetObject("scart", c);
             return Ok("Urun Sepete Eklendi");
 
@@ -37,7 +37,7 @@ namespace Project.Api.Controllers
             if (HttpContext.Session.GetObject<Cart>("scart") != null)
             {
                 Cart c = HttpContext.Session.GetObject<Cart>("scart");
-                c = await _iShopping.Decrease(id, c);
+                c = await _iShopping.DecreaseAsync(id, c);
                 HttpContext.Session.SetObject("scart", c);
                 return Ok();
             }
@@ -50,7 +50,7 @@ namespace Project.Api.Controllers
             if (HttpContext.Session.GetObject<Cart>("scart") != null)
             {
                 Cart c = HttpContext.Session.GetObject<Cart>("scart");
-                c = await _iShopping.DeleteCart(id, c);
+                c = await _iShopping.DeleteCartAsync(id, c);
                 HttpContext.Session.SetObject("scart", c);
                 return Ok();
             }
