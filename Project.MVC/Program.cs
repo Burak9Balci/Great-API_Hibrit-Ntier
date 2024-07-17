@@ -11,6 +11,7 @@ builder.Services.AddSession(x =>
     x.Cookie.IsEssential = true;
 
 });
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddMapperService();
 builder.Services.AddManagerService();
 builder.Services.AddRepService();

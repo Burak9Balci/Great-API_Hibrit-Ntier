@@ -22,7 +22,7 @@ builder.Services.AddDbContextService();
 builder.Services.AddIdentityService();
 builder.Services.AddManagerService();
 builder.Services.AddRepService();
-
+builder.Services.AddHttpContextAccessor();
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.

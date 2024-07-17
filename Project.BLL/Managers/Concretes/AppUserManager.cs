@@ -18,6 +18,7 @@ namespace Project.BLL.Managers.Concretes
         readonly UserManager<AppUser> _userManager;
         readonly IMapper _mapper;
         readonly SignInManager<AppUser> _signInManager;
+
       
         public AppUserManager(IRepository<AppUser> iRep, IMapper mapper, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager) : base(iRep, mapper)
         {
