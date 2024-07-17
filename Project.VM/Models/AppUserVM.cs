@@ -12,5 +12,6 @@ namespace Project.VM.Models
         public virtual string? NormalizedUserName { get; set; }
         public string PasswordHash { get; set; }
         public string NormalizedUserPassword { get; set; }
+        public string? NormalizedEmail { get; set; }
     }
 }

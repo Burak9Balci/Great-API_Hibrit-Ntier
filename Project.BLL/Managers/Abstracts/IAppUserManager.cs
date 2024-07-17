@@ -11,7 +11,15 @@ namespace Project.BLL.Managers.Abstracts
 {
     public interface IAppUserManager : IManager<AppUser,AppUserDTO>
     {
-        public Task<IdentityResult> CreateUserAsync(AppUserDTO appUser);
-        public Task AddRoleToUserAsync(AppUserDTO appUser, string role);
+        //Register metotları
+        Task AddRoleToUserAsync(AppUserDTO appUser, string role);
+        Task<IdentityResult> CreateUserAsync(AppUserDTO appUser);
+        Task<AppUser> FindUserByNameAsync(string userName);
+        Task<IList<string>> GetRolesFromUserAsync(AppUserDTO appUserDTO);
+        Task<SignInResult> SignInAsync(AppUserDTO appUserDTO, string password, bool isPersistent, bool lockoutOnFailure);
+        
+        //SignIn Metotları
+
+
     }
 }

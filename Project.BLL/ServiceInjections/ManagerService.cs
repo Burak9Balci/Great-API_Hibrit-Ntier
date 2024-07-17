@@ -1,9 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using Project.BLL.DTOClasses.Abstracts;
 using Project.BLL.Managers.Abstracts;
 using Project.BLL.Managers.Concretes;
 using Project.BLL.Managers.CustomTools.ShoppingTools.ShoppingManagers;
 using Project.Entities.Interfaces;
+using Project.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +30,10 @@ namespace Project.BLL.ServiceInjections
             service.AddScoped<IOrderDetailManager, OrderDetailManager>();
             service.AddScoped<IOrderManager, OrderManager>();
             service.AddScoped<IShoppingManager, ShoppingManager>();
+            service.AddScoped<UserManager<AppUser>>();
+            service.AddScoped<RoleManager<AppRole>>();
+            service.AddScoped<SignInManager<AppUser>>();
+
             return service;
         }
     }
