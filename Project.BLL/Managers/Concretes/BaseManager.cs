@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Project.BLL.Managers.Concretes
 {
-    public class BaseManager<T,X> : IManager<T,X> where T : class, IEntity where X : class,IDTO
+    public class BaseManager<T, X> : IManager<T, X> where T : class, IEntity where X : class, IDTO
     {
         IMapper _mapper;
         IRepository<T> _iRep;
@@ -37,6 +37,8 @@ namespace Project.BLL.Managers.Concretes
         {
            await _iRep.DeleteAsync(await _iRep.FindAsync(id));
         }
+
+        
 
         public async Task<T> FindAsync(int id)
         {

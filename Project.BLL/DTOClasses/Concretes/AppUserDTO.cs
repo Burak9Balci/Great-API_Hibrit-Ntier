@@ -11,9 +11,7 @@ namespace Project.BLL.DTOClasses.Concretes
 
     { 
         public virtual string? UserName { get; set; }      
-        public virtual string? NormalizedUserName { get; set; }
-        public string PasswordHash { get; set; }
-        public string NormalizedUserPassword { get; set; }
-        public string? NormalizedEmail { get; set; }
+        public string Password { get; set; }
+        public virtual string? Email { get; set; }
     }
 }

@@ -18,23 +18,32 @@ namespace Project.BLL.Managers.Concretes
         readonly UserManager<AppUser> _userManager;
         readonly IMapper _mapper;
         readonly SignInManager<AppUser> _signInManager;
+        IRepository<AppUser> _iRep;
 
-      
+
+
         public AppUserManager(IRepository<AppUser> iRep, IMapper mapper, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager) : base(iRep, mapper)
         {
             _mapper = mapper;
             _userManager = userManager;
             _signInManager = signInManager;
+            _iRep = iRep;
         }
 
-        public async Task AddRoleToUserAsync(AppUserDTO appUser, string role)
-        { 
-            await _userManager.AddToRoleAsync(_mapper.Map<AppUser>(appUser), role);
+        public async Task AddRoleToUserAsync(AppUser appUser, string role)
+        {
+            await _userManager.AddToRoleAsync(appUser, role);
         }
 
         public async Task<IdentityResult> CreateUserAsync(AppUserDTO appUser)
         {
-           return await _userManager.CreateAsync(_mapper.Map<AppUser>(appUser), appUser.NormalizedUserPassword);
+           return await _userManager.CreateAsync(_mapper.Map<AppUser>(appUser), appUser.Password);
+        }
+
+        public async Task EmailConfirmAsync(AppUser user)
+        {
+            user.EmailConfirmed = true;
+            await _iRep.UpdateAsync(user);
         }
 
         public async Task<AppUser> FindUserByNameAsync(string userName)
@@ -50,7 +59,7 @@ namespace Project.BLL.Managers.Concretes
 
         public async Task<SignInResult> SignInAsync(AppUserDTO appUserDTO, string password, bool isPersistent, bool lockoutOnFailure)
         {
-            AppUser user = await FindUserByNameAsync(appUserDTO.NormalizedUserName);
+            AppUser user = await FindUserByNameAsync(appUserDTO.UserName);
             return await _signInManager.PasswordSignInAsync(user,password,isPersistent,lockoutOnFailure);
         }
     }

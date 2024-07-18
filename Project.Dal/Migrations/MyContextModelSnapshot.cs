@@ -167,6 +167,9 @@ namespace Project.Dal.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<Guid>("ActivationCode")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -299,7 +302,7 @@ namespace Project.Dal.Migrations
                         {
                             ID = 1,
                             AuthorName = "J.R.R Martin",
-                            CreatedDate = new DateTime(2024, 7, 12, 21, 34, 19, 678, DateTimeKind.Local).AddTicks(1119),
+                            CreatedDate = new DateTime(2024, 7, 18, 16, 34, 23, 694, DateTimeKind.Local).AddTicks(4647),
                             Status = 1
                         });
                 });

@@ -46,5 +46,12 @@ namespace Project.BLL.Managers.CustomTools.ShoppingTools.ShoppingManagers
             c.DeleteCart(id);
             return c;
         }
+
+        public async Task<CartItem> GetByIdAsync(int id,Cart c)
+        {
+           return c.GetItem(id);
+           
+          
+        }
     }
 }

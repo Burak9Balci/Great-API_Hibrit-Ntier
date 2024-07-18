@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Project.Dal.Migrations
 {
     /// <inheritdoc />
-    public partial class ss : Migration
+    public partial class dd : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -40,6 +40,7 @@ namespace Project.Dal.Migrations
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
+                    ActivationCode = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -337,7 +338,7 @@ namespace Project.Dal.Migrations
             migrationBuilder.InsertData(
                 table: "Authors",
                 columns: new[] { "ID", "AuthorName", "Yaratılan Tarih", "DeletedDate", "ModifiedDate", "Status" },
-                values: new object[] { 1, "J.R.R Martin", new DateTime(2024, 7, 12, 21, 34, 19, 678, DateTimeKind.Local).AddTicks(1119), null, null, 1 });
+                values: new object[] { 1, "J.R.R Martin", new DateTime(2024, 7, 18, 16, 34, 23, 694, DateTimeKind.Local).AddTicks(4647), null, null, 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

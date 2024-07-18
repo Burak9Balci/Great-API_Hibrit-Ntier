@@ -16,17 +16,16 @@
   <ItemGroup>
     <Folder Include="Areas\AdminPanel\Controllers\" />
     <Folder Include="Areas\AdminPanel\Data\" />
-    <Folder Include="Areas\AdminPanel\Models\PageVMs\Book\" />
-    <Folder Include="Areas\AdminPanel\Models\PageVMs\Author\" />
-    <Folder Include="Areas\AdminPanel\Models\PageVMs\Editor\" />
-    <Folder Include="Areas\AdminPanel\Models\PageVMs\Category\" />
-    <Folder Include="Areas\AdminPanel\Models\PageVMs\BookShelf\" />
     <Folder Include="Areas\AdminPanel\Views\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.3" />
   </ItemGroup>
 

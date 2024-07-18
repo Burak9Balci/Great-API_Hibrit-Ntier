@@ -56,6 +56,10 @@ namespace Project.BLL.Managers.CustomTools.ShoppingTools.Models
             }
             DeleteCart(id);
         }
+        public CartItem GetItem(int id)
+        {
+            return _myCart[id];
+        }
 
     }
 }

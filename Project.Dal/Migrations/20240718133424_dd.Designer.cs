@@ -12,8 +12,8 @@ using Project.Dal.ContextClasses;
 namespace Project.Dal.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20240712183420_ss")]
-    partial class ss
+    [Migration("20240718133424_dd")]
+    partial class dd
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -170,6 +170,9 @@ namespace Project.Dal.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<Guid>("ActivationCode")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -302,7 +305,7 @@ namespace Project.Dal.Migrations
                         {
                             ID = 1,
                             AuthorName = "J.R.R Martin",
-                            CreatedDate = new DateTime(2024, 7, 12, 21, 34, 19, 678, DateTimeKind.Local).AddTicks(1119),
+                            CreatedDate = new DateTime(2024, 7, 18, 16, 34, 23, 694, DateTimeKind.Local).AddTicks(4647),
                             Status = 1
                         });
                 });

@@ -36,20 +36,34 @@ namespace Project.MVC.Controllers
         public async Task<IActionResult> Register(AppUserVM appUser)
         {
             AppUserDTO appUserDTO = _iMapper.Map<AppUserDTO>(appUser);
+            AppUser user = await _iAppUserManager.FindUserByNameAsync(appUserDTO.UserName);
             IdentityResult result = await _iAppUserManager.CreateUserAsync(appUserDTO);
             if (result.Succeeded)
             {
                 AppRole role = await _iAppRoleManager.FindRoleAsync("Member");
-                await _iAppUserManager.AddRoleToUserAsync(appUserDTO, role.Name);
-                string body = "";
-                MailService.Send("Test verisi",body:body,appUserDTO.NormalizedEmail);
-                return RedirectToAction("Privacy");
+                await _iAppUserManager.AddRoleToUserAsync(user, role.Name);
+                string body = $"Hesabýnýz olusturulmustur...Üyeligini onaylamak icin lütfen http://localhost:5217/Home/ConfirmEmail?specId={user.ActivationCode}&id={user} linkine týklayýnýz";
+                MailService.Send("Test verisi",body:body,appUserDTO.Email);
+                return RedirectToAction("RedirectPage");
             };
             return View();
+        
+        
         }
-        public async Task<IActionResult> RedirectPage()
+        public async Task<IActionResult> RedirectPage(AppUser appUser,Guid specID)
         {
-            return RedirectToAction();
+
+            if (appUser.ActivationCode == specID)
+            {
+                await _iAppUserManager.EmailConfirmAsync(appUser);
+                TempData["Mesaj"] = "Kayýt iþleminiz Tamamlandý";
+                return RedirectToAction("Login");
+            } 
+            TempData["Saldýrý"] = "Saldýrý var";
+            return View();
+   
+     
+            
         }
         public async Task<IActionResult> Login()
         {
@@ -58,9 +72,10 @@ namespace Project.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(AppUserVM appUser)
         {
-            AppUserDTO appUserDTO = _iMapper.Map<AppUserDTO>(appUser);   
-            SignInResult result = await _iAppUserManager.SignInAsync(appUserDTO,appUserDTO.NormalizedUserPassword,true,true);
-            if (result.Succeeded && (await _iAppUserManager.FirstOrDefaultAsync(x =>x.NormalizedEmail == appUserDTO.NormalizedEmail)).EmailConfirmed)
+           
+            AppUserDTO appUserDTO = _iMapper.Map<AppUserDTO>(appUser);
+            SignInResult result = await _iAppUserManager.SignInAsync(appUserDTO,appUserDTO.Password,true,true);
+            if (result.Succeeded)
             {
                 IList<string> roles = await _iAppUserManager.GetRolesFromUserAsync(appUserDTO);
                 if (roles.Contains("Member"))

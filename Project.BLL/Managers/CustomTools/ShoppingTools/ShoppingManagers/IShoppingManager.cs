@@ -12,6 +12,6 @@ namespace Project.BLL.Managers.CustomTools.ShoppingTools.ShoppingManagers
         public Task<Cart> AddToCartAsync(int id,Cart c);
         public Task<Cart> DeleteCartAsync(int id, Cart c);
         public Task<Cart> DecreaseAsync(int id, Cart c);
-        
+        public Task<CartItem> GetByIdAsync(int id,Cart c);
     }
 }

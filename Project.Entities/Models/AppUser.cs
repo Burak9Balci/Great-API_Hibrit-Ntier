@@ -16,6 +16,7 @@ namespace Project.Entities.Models
         public DateTime? ModifiedDate { get; set; }
         public DateTime? DeletedDate { get; set; }
         public DataStatus Status { get; set; }
+        public Guid ActivationCode { get; set; }
         public AppUser()
         {
             CreatedDate = DateTime.Now;
