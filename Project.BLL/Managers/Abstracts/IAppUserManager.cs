@@ -14,10 +14,11 @@ namespace Project.BLL.Managers.Abstracts
         //Register metotları
         Task AddRoleToUserAsync(AppUser appUser, string role);
         Task<IdentityResult> CreateUserAsync(AppUserDTO appUser);
-        Task<AppUser> FindUserByNameAsync(string userName);
+        Task<AppUser> FindUserByEmailAsync(string email);
         Task<IList<string>> GetRolesFromUserAsync(AppUserDTO appUserDTO);
         Task<SignInResult> SignInAsync(AppUserDTO appUserDTO, string password, bool isPersistent, bool lockoutOnFailure);
-        Task EmailConfirmAsync(AppUser appUser);
+        Task EmailConfirmAsync(AppUser appUser); 
+        Task UpdateUserAsync(AppUser appUser);
 
         //SignIn Metotları
 

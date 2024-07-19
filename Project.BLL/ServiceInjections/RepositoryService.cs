@@ -13,7 +13,7 @@ namespace Project.BLL.ServiceInjections
 {
     public static class RepositoryService
     {
-        public static IServiceCollection AddRepService(this IServiceCollection service)
+        public static IServiceCollection AddRepositoryService(this IServiceCollection service)
         {
             service.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
             service.AddScoped<IBookRepository,BookRepository>();

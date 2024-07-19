@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Project.BLL.DTOClasses.Concretes;
@@ -33,47 +34,48 @@ namespace Project.MVC.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Register(AppUserVM appUser)
+        public async Task<IActionResult> Register(AppUserVM appUserVM)
         {
-            AppUserDTO appUserDTO = _iMapper.Map<AppUserDTO>(appUser);
-            AppUser user = await _iAppUserManager.FindUserByNameAsync(appUserDTO.UserName);
+
+            AppUserDTO appUserDTO = _iMapper.Map<AppUserDTO>(appUserVM);
+            appUserDTO.ActivationCode = Guid.NewGuid();
             IdentityResult result = await _iAppUserManager.CreateUserAsync(appUserDTO);
             if (result.Succeeded)
             {
+                AppUser user = await _iAppUserManager.FindUserByEmailAsync(appUserDTO.Email);
                 AppRole role = await _iAppRoleManager.FindRoleAsync("Member");
                 await _iAppUserManager.AddRoleToUserAsync(user, role.Name);
-                string body = $"Hesabýnýz olusturulmustur...Üyeligini onaylamak icin lütfen http://localhost:5217/Home/ConfirmEmail?specId={user.ActivationCode}&id={user} linkine týklayýnýz";
+                string body = $"Hesabýnýz olusturulmustur...Üyeligini onaylamak icin lütfen http://localhost:5176/Home/RedirectPage?specId={appUserDTO.ActivationCode}&id={user.Id} linkine týklayýnýz";
                 MailService.Send("Test verisi",body:body,appUserDTO.Email);
-                return RedirectToAction("RedirectPage");
+                return RedirectToAction("Login");
             };
+        
             return View();
         
         
         }
-        public async Task<IActionResult> RedirectPage(AppUser appUser,Guid specID)
+        public async Task<IActionResult> RedirectPage(Guid specId,int id)
         {
-
-            if (appUser.ActivationCode == specID)
+            AppUser user = await _iAppUserManager.FindAsync(id);
+            if (user.ActivationCode == specId)
             {
-                await _iAppUserManager.EmailConfirmAsync(appUser);
+                await _iAppUserManager.EmailConfirmAsync(user);
                 TempData["Mesaj"] = "Kayýt iþleminiz Tamamlandý";
                 return RedirectToAction("Login");
             } 
             TempData["Saldýrý"] = "Saldýrý var";
-            return View();
-   
-     
-            
+            return View();     
         }
         public async Task<IActionResult> Login()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(AppUserVM appUser)
+        public async Task<IActionResult> Login(AppUserVM appUserVM)
         {
-           
-            AppUserDTO appUserDTO = _iMapper.Map<AppUserDTO>(appUser);
+            
+            AppUserDTO appUserDTO = _iMapper.Map<AppUserDTO>(appUserVM);
+          
             SignInResult result = await _iAppUserManager.SignInAsync(appUserDTO,appUserDTO.Password,true,true);
             if (result.Succeeded)
             {
@@ -91,12 +93,16 @@ namespace Project.MVC.Controllers
             return View();
             
         }
+        [Authorize(Roles = "Member")]
         public IActionResult Privacy()
         {
             return View();
         }
 
-
+        public IActionResult deneme()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -12,15 +12,15 @@ using Project.Dal.ContextClasses;
 namespace Project.Dal.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20240718133424_dd")]
-    partial class dd
+    [Migration("20240719200059_h")]
+    partial class h
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
+                .HasAnnotation("ProductVersion", "8.0.7")
                 .HasAnnotation("Proxies:ChangeTracking", false)
                 .HasAnnotation("Proxies:CheckEquality", false)
                 .HasAnnotation("Proxies:LazyLoading", true)
@@ -305,7 +305,7 @@ namespace Project.Dal.Migrations
                         {
                             ID = 1,
                             AuthorName = "J.R.R Martin",
-                            CreatedDate = new DateTime(2024, 7, 18, 16, 34, 23, 694, DateTimeKind.Local).AddTicks(4647),
+                            CreatedDate = new DateTime(2024, 7, 19, 23, 0, 58, 814, DateTimeKind.Local).AddTicks(6579),
                             Status = 1
                         });
                 });

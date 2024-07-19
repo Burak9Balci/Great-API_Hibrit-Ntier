@@ -25,6 +25,7 @@ namespace Project.BLL.ServiceInjections
                 x.Password.RequireLowercase = false;
                 x.SignIn.RequireConfirmedEmail = true;
                 x.Password.RequireNonAlphanumeric = false;
+                x.User.RequireUniqueEmail = true;                
 
             }).AddRoles<AppRole>().AddEntityFrameworkStores<MyContext>();
             return services;

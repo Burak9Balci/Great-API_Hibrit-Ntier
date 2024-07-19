@@ -1,0 +1,13 @@
+﻿@using Project.MVC.Models.PageVMs
+@model LoginPageVM
+
+@TempData["Mesaj"]
+<form asp-action="Login" asp-controller="Home" method="post">
+
+    <label> Email giriniz</label>
+    <input asp-for="AppUserVM.Email"/>
+    <label> Sifre giriniz</label>
+    <input asp-for="AppUserVM.Password" />
+    <button>Login</button>
+
+</form>

@@ -34,23 +34,26 @@ namespace Project.BLL.Managers.Concretes
         {
             await _userManager.AddToRoleAsync(appUser, role);
         }
-
+        public async Task<string> MakeUserName(string mail)
+        {
+            int index = mail.IndexOf('@');
+            return mail.Substring(0, index);
+        }
         public async Task<IdentityResult> CreateUserAsync(AppUserDTO appUser)
         {
-           return await _userManager.CreateAsync(_mapper.Map<AppUser>(appUser), appUser.Password);
-        }
 
+            appUser.UserName = await MakeUserName(appUser.Email);
+            return await _userManager.CreateAsync(_mapper.Map<AppUser>(appUser), appUser.Password);
+        }
         public async Task EmailConfirmAsync(AppUser user)
         {
             user.EmailConfirmed = true;
-            await _iRep.UpdateAsync(user);
+            await UpdateUserAsync(user);
         }
-
-        public async Task<AppUser> FindUserByNameAsync(string userName)
+        public async Task<AppUser> FindUserByEmailAsync(string email)
         {
-            return await _userManager.FindByNameAsync(userName);
+            return await _userManager.FindByEmailAsync(email);
         }
-
         public async Task<IList<string>> GetRolesFromUserAsync(AppUserDTO appUserDTO)
         {
             AppUser user = _mapper.Map<AppUser>(appUserDTO);
@@ -59,8 +62,13 @@ namespace Project.BLL.Managers.Concretes
 
         public async Task<SignInResult> SignInAsync(AppUserDTO appUserDTO, string password, bool isPersistent, bool lockoutOnFailure)
         {
-            AppUser user = await FindUserByNameAsync(appUserDTO.UserName);
+            AppUser user = await FindUserByEmailAsync(appUserDTO.Email);
             return await _signInManager.PasswordSignInAsync(user,password,isPersistent,lockoutOnFailure);
+        }
+
+        public async Task UpdateUserAsync(AppUser appUser)
+        {
+            await _userManager.UpdateAsync(appUser);
         }
     }
 }

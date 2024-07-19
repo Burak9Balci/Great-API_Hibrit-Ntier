@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Project.Dal.Migrations
 {
     /// <inheritdoc />
-    public partial class dd : Migration
+    public partial class h : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -338,7 +338,7 @@ namespace Project.Dal.Migrations
             migrationBuilder.InsertData(
                 table: "Authors",
                 columns: new[] { "ID", "AuthorName", "Yaratılan Tarih", "DeletedDate", "ModifiedDate", "Status" },
-                values: new object[] { 1, "J.R.R Martin", new DateTime(2024, 7, 18, 16, 34, 23, 694, DateTimeKind.Local).AddTicks(4647), null, null, 1 });
+                values: new object[] { 1, "J.R.R Martin", new DateTime(2024, 7, 19, 23, 0, 58, 814, DateTimeKind.Local).AddTicks(6579), null, null, 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

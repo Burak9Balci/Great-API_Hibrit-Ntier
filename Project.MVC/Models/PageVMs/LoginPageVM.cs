@@ -5,6 +5,6 @@ namespace Project.MVC.Models.PageVMs
 {
     public class LoginPageVM
     {
-        public AppUserVM AppUser { get; set; }
+        public AppUserVM AppUserVM { get; set; }
     }
 }

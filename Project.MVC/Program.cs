@@ -11,10 +11,12 @@ builder.Services.AddSession(x =>
     x.Cookie.IsEssential = true;
 
 });
+builder.Services.AddCookieService();
+builder.Services.AddAuthenticationService();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddMapperService();
 builder.Services.AddManagerService();
-builder.Services.AddRepService();
+builder.Services.AddRepositoryService();
 builder.Services.AddDbContextService();
 builder.Services.AddManagerService();
 builder.Services.AddIdentityService();
@@ -29,11 +31,11 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 app.UseSession();
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Register}/{id?}");
+    pattern: "{controller=Home}/{action=Login}/{id?}");
 
 app.Run();

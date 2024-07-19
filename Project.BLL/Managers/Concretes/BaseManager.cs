@@ -38,8 +38,6 @@ namespace Project.BLL.Managers.Concretes
            await _iRep.DeleteAsync(await _iRep.FindAsync(id));
         }
 
-        
-
         public async Task<T> FindAsync(int id)
         {
             return await _iRep.FindAsync(id);

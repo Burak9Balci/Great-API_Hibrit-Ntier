@@ -17,7 +17,7 @@ namespace Project.Dal.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
+                .HasAnnotation("ProductVersion", "8.0.7")
                 .HasAnnotation("Proxies:ChangeTracking", false)
                 .HasAnnotation("Proxies:CheckEquality", false)
                 .HasAnnotation("Proxies:LazyLoading", true)
@@ -302,7 +302,7 @@ namespace Project.Dal.Migrations
                         {
                             ID = 1,
                             AuthorName = "J.R.R Martin",
-                            CreatedDate = new DateTime(2024, 7, 18, 16, 34, 23, 694, DateTimeKind.Local).AddTicks(4647),
+                            CreatedDate = new DateTime(2024, 7, 19, 23, 0, 58, 814, DateTimeKind.Local).AddTicks(6579),
                             Status = 1
                         });
                 });

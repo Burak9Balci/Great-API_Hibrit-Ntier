@@ -20,7 +20,11 @@ namespace Project.Common
                 Credentials = new NetworkCredential(senderMail.Address, password)
 
             };
-            using (MailMessage message = new MailMessage(senderMail,receiverMail))
+            using (MailMessage message = new MailMessage(senderMail, receiverMail)
+            {
+                Body = body,
+                Subject = subject
+            })
             {
                 smtp.Send(message);
             };
