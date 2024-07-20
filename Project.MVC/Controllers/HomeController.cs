@@ -93,13 +93,8 @@ namespace Project.MVC.Controllers
             return View();
             
         }
-        [Authorize(Roles = "Member")]
+       
         public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        public IActionResult deneme()
         {
             return View();
         }

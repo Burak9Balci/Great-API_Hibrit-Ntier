@@ -56,7 +56,7 @@ namespace Project.BLL.Managers.Concretes
         }
         public async Task<IList<string>> GetRolesFromUserAsync(AppUserDTO appUserDTO)
         {
-            AppUser user = _mapper.Map<AppUser>(appUserDTO);
+            AppUser user = await FindUserByEmailAsync(appUserDTO.Email);
             return await _userManager.GetRolesAsync(user);
         }
 
