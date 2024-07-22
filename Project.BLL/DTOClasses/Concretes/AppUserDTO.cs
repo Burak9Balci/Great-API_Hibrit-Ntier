@@ -12,6 +12,7 @@ namespace Project.BLL.DTOClasses.Concretes
     { 
         public virtual string? UserName { get; set; }      
         public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
         public virtual string? Email { get; set; }
         public Guid ActivationCode { get; set; }
     }

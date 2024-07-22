@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Project.BLL.Managers.CustomTools.ShoppingTools.Models;
 using Project.BLL.Managers.CustomTools.ShoppingTools.ShoppingManagers;
@@ -7,10 +8,12 @@ using Project.MVC.Models.PageVMs;
 
 namespace Project.MVC.Controllers
 {
+    [Authorize(Roles = "Member")]
     public class ShoppingController : Controller
     {
         IMapper _iMapper;
         IShoppingManager _shoppingManager;
+     
         public ShoppingController(IMapper iMapper,IShoppingManager iShoppingManager)
         {
             _iMapper = iMapper;
@@ -20,6 +23,7 @@ namespace Project.MVC.Controllers
         {
             return View();
         }
+       
         public async Task<IActionResult> MyCart()
         {
             if (HttpContext.Session.GetObject<Cart>("scart") != null)

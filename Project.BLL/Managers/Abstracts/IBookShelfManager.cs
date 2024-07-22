@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Project.BLL.Managers.Abstracts
 {
-    public interface IBookShelfManager : IManager<BookShelf,BookShelfDTO>
+    public interface IBookShelfManager : IMapper<BookShelf,BookShelfDTO>
     {
     }
 }

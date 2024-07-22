@@ -3,11 +3,17 @@
 
 @TempData["Mesaj"]
 <form asp-action="Login" asp-controller="Home" method="post">
-
-    <label> Email giriniz</label>
-    <input asp-for="AppUserVM.Email"/>
-    <label> Sifre giriniz</label>
-    <input asp-for="AppUserVM.Password" />
-    <button>Login</button>
-
+    <section>
+        <main>
+            <div>
+                <label for="mail"> Email giriniz</label>
+                <input asp-for="LoginAppUserVM.Email" id="mail" class="form-control" />
+            </div>
+            <div>
+                <label for="sifre"> Sifre giriniz</label>
+                <input asp-for="LoginAppUserVM.Password" id="sifre" class="form-control" />
+            </div>
+        </main>
+        <button>Login</button>
+    </section>
 </form>

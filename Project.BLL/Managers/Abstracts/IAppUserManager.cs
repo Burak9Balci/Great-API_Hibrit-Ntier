@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Project.BLL.Managers.Abstracts
 {
-    public interface IAppUserManager : IManager<AppUser,AppUserDTO>
+    public interface IAppUserManager : IMapper<AppUser,AppUserDTO>
     {
         //Register metotları
         Task AddRoleToUserAsync(AppUser appUser, string role);

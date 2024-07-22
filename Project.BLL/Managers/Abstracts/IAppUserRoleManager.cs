@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Project.BLL.Managers.Abstracts
 {
-    public interface IAppUserRoleManager : IManager<AppUserRole,AppUserRoleDTO>
+    public interface IAppUserRoleManager : IMapper<AppUserRole,AppUserRoleDTO>
     {
     }
 }

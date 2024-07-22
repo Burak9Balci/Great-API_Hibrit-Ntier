@@ -16,6 +16,8 @@ namespace Project.BLL.MapperProfiles
         {
             CreateMap<AppUserVM, AppUserDTO>().ReverseMap();
             CreateMap<AppUserDTO,AppUser>().ReverseMap();
+            CreateMap<AppUserDTO,LoginAppUserVM>().ReverseMap();
+            CreateMap<AppUserDTO,RegisterAppUserVM>().ReverseMap();
         }
     }
 }

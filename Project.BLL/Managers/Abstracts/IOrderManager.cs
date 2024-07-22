@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Project.BLL.Managers.Abstracts
 {
-    public interface IOrderManager : IManager<Order,OrderDTO>
+    public interface IOrderManager : IMapper<Order,OrderDTO>
     {
     }
 }

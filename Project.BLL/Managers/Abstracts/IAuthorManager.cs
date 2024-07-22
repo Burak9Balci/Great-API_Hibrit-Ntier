@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Project.BLL.Managers.Abstracts
 {
-    public interface IAuthorManager : IManager<Author,AuthorDTO>
+    public interface IAuthorManager : IMapper<Author,AuthorDTO>
     {
     }
 }

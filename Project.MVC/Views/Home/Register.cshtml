@@ -1,20 +1,30 @@
 ﻿@using Project.MVC.Models.PageVMs
-@model LoginPageVM
+@model RegisterPageVM
 
-<form asp-action="Register" asp-controller="Home" method="post" class="p-3 w-75 m-auto">
+<form asp-action="Register" asp-controller="Home" method="post">
+    @TempData["AyniDegil"]
 
-    <div class="mb-4">
-        <label for="as">Email giriniz</label>
-        <input asp-for="AppUserVM.Email" class="form-control" itemid="as" />
-    </div>
+    <section>
+        <main>
+            <div class="mb-3">
+                <label for="as">Email giriniz</label>
+                <input asp-for="RegisterAppUserVM.Email" class="form-control" id="as" />
+            </div>
 
-    <div class="mb-4">
-        <label>Sifre giriniz</label>
-        <input asp-for="AppUserVM.Password" class="form-control" />
-    </div>
+            <div class="mb-3">
+                <label for="sifre">Sifre giriniz</label>
+                <input asp-for="RegisterAppUserVM.Password" class="form-control" id="sifre" />
+            </div>
 
-    <div class="mb-4">
-        <button class="btn btn-primary">Kayıt ol</button>
-    </div>
+            <div class="mb-3">
+                <label for="tekrar">Sifre Tekrar giriniz</label>
+                <input asp-for="RegisterAppUserVM.ConfirmPassword" class="form-control" id="tekrar" />
+            </div>
+        </main>
+        <div class="mb-3">
+            <button class="btn btn-primary">Kayıt ol</button>
+        </div>
+    </section>
+
 
 </form>

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Project.BLL.Managers.Abstracts
 {
-    public interface IManager<T,X> where T : IEntity where X : IDTO
+    public interface IMapper<T,X> where T : IEntity where X : IDTO
     {
         List<T> GetActives();
         List<T> GetPassives();

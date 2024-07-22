@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Project.BLL.Managers.Abstracts
 {
-    public interface ICategoryManager : IManager<Category, CategoryDTO>
+    public interface ICategoryManager : IMapper<Category, CategoryDTO>
     {
     }
 }

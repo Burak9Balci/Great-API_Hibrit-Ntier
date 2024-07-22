@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Project.BLL.Managers.Abstracts
 {
-    public interface IEditorManager : IManager<Editor,EditorDTO>
+    public interface IEditorManager : IMapper<Editor,EditorDTO>
     {
     }
 }

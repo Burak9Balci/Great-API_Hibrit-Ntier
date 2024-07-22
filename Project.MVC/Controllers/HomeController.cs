@@ -34,23 +34,25 @@ namespace Project.MVC.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Register(AppUserVM appUserVM)
+        public async Task<IActionResult> Register(RegisterAppUserVM registerAppUserVM)
         {
-
-            AppUserDTO appUserDTO = _iMapper.Map<AppUserDTO>(appUserVM);
-            appUserDTO.ActivationCode = Guid.NewGuid();
-            IdentityResult result = await _iAppUserManager.CreateUserAsync(appUserDTO);
-            if (result.Succeeded)
+            if (registerAppUserVM.Password == registerAppUserVM.ConfirmPassword)
             {
-                AppUser user = await _iAppUserManager.FindUserByEmailAsync(appUserDTO.Email);
-                AppRole role = await _iAppRoleManager.FindRoleAsync("Member");
-                await _iAppUserManager.AddRoleToUserAsync(user, role.Name);
-                string body = $"Hesabýnýz olusturulmustur...Üyeligini onaylamak icin lütfen http://localhost:5176/Home/RedirectPage?specId={appUserDTO.ActivationCode}&id={user.Id} linkine týklayýnýz";
-                MailService.Send("Test verisi",body:body,appUserDTO.Email);
-                return RedirectToAction("Login");
-            };
-        
-            return View();
+                AppUserDTO appUserDTO = _iMapper.Map<AppUserDTO>(registerAppUserVM);
+                appUserDTO.ActivationCode = Guid.NewGuid();
+                IdentityResult result = await _iAppUserManager.CreateUserAsync(appUserDTO);
+                if (result.Succeeded)
+                {
+                    AppUser user = await _iAppUserManager.FindUserByEmailAsync(appUserDTO.Email);
+                    AppRole role = await _iAppRoleManager.FindRoleAsync("Member");
+                    await _iAppUserManager.AddRoleToUserAsync(user, role.Name);
+                    string body = $"Hesabýnýz olusturulmustur...Üyeligini onaylamak icin lütfen http://localhost:5176/Home/RedirectPage?specId={appUserDTO.ActivationCode}&id={user.Id} linkine týklayýnýz";
+                    MailService.Send("Test verisi", body: body, appUserDTO.Email);
+                    return RedirectToAction("Login");
+                };
+            }//Test amacýyla
+            TempData["AyniDegil"] = "Sifreler esleþmiyor";
+            return View(registerAppUserVM);
         
         
         }
@@ -71,11 +73,9 @@ namespace Project.MVC.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(AppUserVM appUserVM)
+        public async Task<IActionResult> Login(LoginAppUserVM loginAppUserVM)
         {
-            
-            AppUserDTO appUserDTO = _iMapper.Map<AppUserDTO>(appUserVM);
-          
+            AppUserDTO appUserDTO = _iMapper.Map<AppUserDTO>(loginAppUserVM);
             SignInResult result = await _iAppUserManager.SignInAsync(appUserDTO,appUserDTO.Password,true,true);
             if (result.Succeeded)
             {
@@ -90,8 +90,7 @@ namespace Project.MVC.Controllers
                 }   
             }
             TempData["LoginHatasi"] = "Kullanýcý bulunamadý";
-            return View();
-            
+            return View();       
         }
        
         public IActionResult Privacy()

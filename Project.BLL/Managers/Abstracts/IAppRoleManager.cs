@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Project.BLL.Managers.Abstracts
 {
-    public interface IAppRoleManager : IManager<AppRole,AppRoleDTO>
+    public interface IAppRoleManager : IMapper<AppRole,AppRoleDTO>
     {
         public Task<AppRole> FindRoleAsync(string role);
 

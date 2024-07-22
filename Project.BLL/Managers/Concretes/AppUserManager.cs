@@ -41,9 +41,11 @@ namespace Project.BLL.Managers.Concretes
         }
         public async Task<IdentityResult> CreateUserAsync(AppUserDTO appUser)
         {
-
-            appUser.UserName = await MakeUserName(appUser.Email);
-            return await _userManager.CreateAsync(_mapper.Map<AppUser>(appUser), appUser.Password);
+            
+                appUser.UserName = await MakeUserName(appUser.Email);
+                return await _userManager.CreateAsync(_mapper.Map<AppUser>(appUser), appUser.Password);
+            
+       
         }
         public async Task EmailConfirmAsync(AppUser user)
         {
