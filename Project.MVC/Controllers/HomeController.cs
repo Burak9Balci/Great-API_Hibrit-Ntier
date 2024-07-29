@@ -31,6 +31,7 @@ namespace Project.MVC.Controllers
 
         public IActionResult Register()
         {
+          
             return View();
         }
         [HttpPost]

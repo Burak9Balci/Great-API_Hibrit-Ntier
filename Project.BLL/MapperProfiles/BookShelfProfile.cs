@@ -22,6 +22,7 @@ namespace Project.BLL.MapperProfiles
             CreateMap<BookShelfCreateRequestModel, BookShelfDTO>().ReverseMap();
             CreateMap<BookShelfResponseModel, BookShelfDTO>().ReverseMap();
             CreateMap<BookShelfVM, BookShelfDTO>().ReverseMap();
+            CreateMap<List<BookShelfVM>, BookShelfDTO>().ReverseMap();
 
         }
     }

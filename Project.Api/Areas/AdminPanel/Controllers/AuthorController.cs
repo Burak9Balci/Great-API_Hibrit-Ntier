@@ -49,7 +49,7 @@ namespace Project.Api.Areas.AdminPanel.Controllers
             return Ok($"{authorDto.AuthorName} isimli kişi sis teme eklenmiştir");
         }
         [HttpPut]
-        public async Task<IActionResult> UpdateAuthor(AuthorUpdateRequestModel model,int id)
+        public async Task<IActionResult> UpdateAuthor(AuthorUpdateRequestModel model)
         {
             AuthorDTO authorDto = _iMapper.Map<AuthorDTO>(model);
             await _iAuthor.UpdateAsync(authorDto);

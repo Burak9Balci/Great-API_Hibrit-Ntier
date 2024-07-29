@@ -72,5 +72,10 @@ namespace Project.BLL.Managers.Concretes
         {
             await _userManager.UpdateAsync(appUser);
         }
+
+        public async Task<IdentityResult> ChangePasswordAsync(AppUserDTO user, string currentPassword, string newPassword)
+        {
+           return await _userManager.ChangePasswordAsync(_mapper.Map<AppUser>(user),currentPassword,newPassword);
+        }
     }
 }

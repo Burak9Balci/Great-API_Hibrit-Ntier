@@ -21,6 +21,7 @@ namespace Project.BLL.MapperProfiles
             CreateMap<AuthorUpdateRequestModel, AuthorDTO>().ReverseMap();
             CreateMap<AuthorResponseModel, AuthorDTO>().ReverseMap();
             CreateMap<AuthorVM,AuthorDTO>().ReverseMap();
+            CreateMap<List<AuthorVM>, AuthorDTO>().ReverseMap();
 
         }
     }

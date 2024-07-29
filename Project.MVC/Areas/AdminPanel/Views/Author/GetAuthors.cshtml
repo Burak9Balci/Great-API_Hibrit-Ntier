@@ -1,0 +1,27 @@
+﻿@using Project.MVC.Areas.AdminPanel.Models.PageVMs.Author
+@using Project.VM.Models
+@model AuthorListPageVM
+<header>
+    <a asp-action="CreateAuthor" asp-area="AdminPanel" asp-controller="Author">Author Ekle</a>
+</header>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>AuthorName</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (AuthorVM item in Model.Authors)
+            {
+                <td>@item.ID</td>
+                <td>@item.AuthorName</td>
+                <td></td>
+                <td></td>
+            }
+        </tr>
+    </tbody>
+</table>

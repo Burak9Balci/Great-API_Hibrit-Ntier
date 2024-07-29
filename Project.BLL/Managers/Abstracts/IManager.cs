@@ -1,5 +1,6 @@
 ﻿using Project.BLL.DTOClasses;
 using Project.BLL.DTOClasses.Abstracts;
+using Project.BLL.DTOClasses.Concretes;
 using Project.Entities.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,7 @@ namespace Project.BLL.Managers.Abstracts
         List<T> GetModifieds();
         Task AddAsync(X item);
         Task UpdateAsync(X item);
-      
         Task DeleteAsync(int id);
-        
         List<T> Where(Expression<Func<T, bool>> exp);
         List<T> GetAll();
         Task<bool> AnyAsync(Expression<Func<T, bool>> exp);
@@ -27,5 +26,7 @@ namespace Project.BLL.Managers.Abstracts
         object Select(Expression<Func<T, object>> exp);
         IQueryable<X> Select<X>(Expression<Func<T, X>> exp);
         Task<T> FindAsync(int id);
+        
+        
     }
 }

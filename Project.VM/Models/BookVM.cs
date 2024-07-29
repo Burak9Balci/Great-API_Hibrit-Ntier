@@ -15,5 +15,9 @@ namespace Project.VM.Models
         public int BookShelfID { get; set; }
         public int CategoryID { get; set; }
         public int EditorID { get; set; }
+        public int AuthorName { get; set; }
+        public int ShelfNo { get; set; }
+        public int CategoryName { get; set; }
+        public int EditorName { get; set; }
     }
 }

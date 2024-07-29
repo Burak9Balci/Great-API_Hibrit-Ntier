@@ -21,6 +21,8 @@ namespace Project.BLL.MapperProfiles
             CreateMap<EditorUpdateRequestModel,EditorDTO>().ReverseMap();
             CreateMap<EditorResponseModel, EditorDTO>().ReverseMap();
             CreateMap<EditorVM, EditorDTO>().ReverseMap();
+          //  CreateMap<List<EditorVM>, List<EditorDTO>>().ReverseMap();
+            CreateMap<List<EditorDTO>, Editor>().ReverseMap();
         }
     }
 }

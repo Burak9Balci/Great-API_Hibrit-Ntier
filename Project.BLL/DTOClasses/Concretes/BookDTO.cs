@@ -16,6 +16,10 @@ namespace Project.BLL.DTOClasses.Concretes
         public int BookShelfID { get; set; }
         public int CategoryID { get; set; }
         public int EditorID { get; set; }
+        public string AuthorName { get; set; }
+        public string ShelfNo { get; set; }
+        public string CategoryName { get; set; }
+        public string EditorName { get; set; }
 
     }
 }

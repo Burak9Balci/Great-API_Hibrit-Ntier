@@ -67,9 +67,9 @@ namespace Project.Dal.Repositories.Concretes
             await _db.SaveChangesAsync();
         }
 
-        public List<T> Where(Expression<Func<T, bool>> exp)
+        public IQueryable<T> Where(Expression<Func<T, bool>> exp)
         {
-           return _db.Set<T>().Where(exp).ToList();
+           return _db.Set<T>().Where(exp);
         }
     }
 }

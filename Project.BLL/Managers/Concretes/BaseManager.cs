@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Project.BLL.DTOClasses.Abstracts;
+using Project.BLL.DTOClasses.Concretes;
 using Project.BLL.Managers.Abstracts;
 using Project.Dal.Repositories.Abstracts;
 using Project.Dal.Repositories.Concretes;
+using Project.Entities.Enums;
 using Project.Entities.Interfaces;
 using Project.Entities.Models;
 using System;
@@ -60,12 +63,12 @@ namespace Project.BLL.Managers.Concretes
 
         public List<T> GetModifieds()
         {
-            return _iRep.GetAll().Where(x => x.Status == Entities.Enums.DataStatus.Updated).ToList();
+            return _iRep.GetAll().Where(x => x.Status == DataStatus.Updated).ToList();
         }
 
         public List<T> GetPassives()
         {
-            return _iRep.GetAll().Where(x => x.Status != Entities.Enums.DataStatus.Deleted).ToList();
+            return _iRep.GetAll().Where(x => x.Status != DataStatus.Deleted).ToList();
         }
 
         public object Select(Expression<Func<T, object>> exp)
@@ -85,7 +88,7 @@ namespace Project.BLL.Managers.Concretes
 
         public List<T> Where(Expression<Func<T, bool>> exp)
         {
-            return _iRep.Where(exp);
+           return _iRep.Where(exp).ToList();
         }
     }
 }

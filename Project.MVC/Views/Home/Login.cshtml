@@ -5,6 +5,7 @@
 <form asp-action="Login" asp-controller="Home" method="post">
     <section>
         <main>
+          
             <div>
                 <label for="mail"> Email giriniz</label>
                 <input asp-for="LoginAppUserVM.Email" id="mail" class="form-control" />
@@ -12,6 +13,9 @@
             <div>
                 <label for="sifre"> Sifre giriniz</label>
                 <input asp-for="LoginAppUserVM.Password" id="sifre" class="form-control" />
+            </div>
+            <div>
+                <a asp-action="register">Parolamı unuttum</a>
             </div>
         </main>
         <button>Login</button>

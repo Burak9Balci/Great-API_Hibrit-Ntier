@@ -20,10 +20,10 @@ namespace Project.Entities.Models
         public string Name { get; set; }
         public decimal UnitPrice { get; set; }
         public int UnitInStock { get; set; }
-        public int? CategoryID { get; set; }
-        public int? AuthorID { get; set; }
-        public int? BookShelfID { get; set; }
-        public int? EditorID { get; set; }
+        public int CategoryID { get; set; }
+        public int AuthorID { get; set; }
+        public int BookShelfID { get; set; }
+        public int EditorID { get; set; }
 
         //Rs
         public virtual Category Category { get; set; }

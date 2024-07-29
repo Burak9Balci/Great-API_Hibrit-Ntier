@@ -37,4 +37,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Login}/{id?}");
 
+app.MapControllerRoute(
+    name: "AdminPanel",
+    pattern: "{area}/{controller=Author}/{action=GetAuthors}/{id?}");
+
 app.Run();

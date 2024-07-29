@@ -21,6 +21,7 @@ namespace Project.BLL.MapperProfiles
             CreateMap<CategoryUpdateRequestModel,CategoryDTO>().ReverseMap();
             CreateMap<CategoryResponseModel,CategoryDTO>().ReverseMap();
             CreateMap<CategoryVM,CategoryDTO>().ReverseMap();
+            CreateMap<List<CategoryDTO>, Category>().ReverseMap();
         }
     }
 }

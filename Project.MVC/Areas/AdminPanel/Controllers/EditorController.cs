@@ -1,11 +1,15 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Project.BLL.DTOClasses.Concretes;
 using Project.BLL.Managers.Abstracts;
+using Project.BLL.ResponseModels.Book;
+using Project.Entities.Models;
 using Project.MVC.Areas.AdminPanel.Models.PageVMs.Editor;
 using Project.VM.Models;
 
 namespace Project.MVC.Areas.AdminPanel.Controllers
 {
+    [Area("AdminPanel")]
     public class EditorController : Controller
     {
         IEditorManager _iEditorManager;
@@ -15,18 +19,46 @@ namespace Project.MVC.Areas.AdminPanel.Controllers
             _iMapper = iMapper;
             _iEditorManager = iEditorManager;
         }
-        public IActionResult GetEditors()
+        public async Task<IActionResult> GetEditors()
         {
-            EditorListPageVM editorListPage = new()
+            List<EditorDTO> editorDTOs = _iEditorManager.Where(x => x.Status != Entities.Enums.DataStatus.Deleted).Select(x => new EditorDTO
             {
-                 Editors = _iEditorManager.Select(x => new EditorVM
-                 {
-                     ID = x.ID,
-                     EditorName = x.EditorName,
+                ID = x.ID,
+                EditorName = x.EditorName,
 
-                 }).ToList()
+            }).ToList();
+            EditorListPageVM response = new()
+            {
+                Editors = _iMapper.Map<List<EditorVM>>(editorDTOs)
             };
-            return View(editorListPage);
+            return View(response);
+        }
+        public async Task<IActionResult> CreateEditor()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateEditor(EditorVM editorVM)
+        {
+            EditorDTO editor = _iMapper.Map<EditorDTO>(editorVM);
+            await _iEditorManager.AddAsync(editor);
+            return RedirectToAction("GetEditors");
+        }
+        public async Task<IActionResult> UpdateEditor(int id)
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdateEditor(EditorVM editorVM)
+        {
+            EditorDTO editor = _iMapper.Map<EditorDTO>(editorVM);
+            await _iEditorManager.UpdateAsync(editor);
+            return RedirectToAction("GetEditors");
+        }
+        public async Task<IActionResult> DeleteEditor(int id)
+        {
+            await _iEditorManager.DeleteAsync(id);
+            return RedirectToAction("GetEditors");
         }
     }
 }

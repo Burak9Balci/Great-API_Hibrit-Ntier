@@ -19,6 +19,7 @@ namespace Project.BLL.Managers.Abstracts
         Task<SignInResult> SignInAsync(AppUserDTO appUserDTO, string password, bool isPersistent, bool lockoutOnFailure);
         Task EmailConfirmAsync(AppUser appUser); 
         Task UpdateUserAsync(AppUser appUser);
+        Task<IdentityResult> ChangePasswordAsync(AppUserDTO user, string currentPassword, string newPassword);
 
         //SignIn Metotları
 
